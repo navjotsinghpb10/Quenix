@@ -20,8 +20,7 @@ from django.conf import settings
 router = DefaultRouter()
 
 urlpatterns = [
-    # url(r'^jet/', include('jet.urls', 'jet')),
-    # url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
+
     path('api/v1/login/', accounts_views.LoginView.as_view(),name='login'),
     path('api/v1/', include('rest_auth.urls')),
     path('api/v1/registration/', accounts_views.UserRegister.as_view(), name='user_register'),   
@@ -29,7 +28,8 @@ urlpatterns = [
     path('api/v1/check-user/',accounts_views.UserCheckApi.as_view(),name='check_user'),
     path('api/v1/user/change-password/', accounts_views.ChangePasswordView.as_view(), name='changepasswordView'),
     path('api/v1/logout/',accounts_views.UserLogout.as_view(), name='user_logout'),
-
+    url(r'^jet/', include('jet.urls', 'jet')),
+    url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
@@ -37,4 +37,5 @@ urlpatterns = [
     path('', include(router.urls)),
 
     
-] 
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+

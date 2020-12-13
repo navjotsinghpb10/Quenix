@@ -9,4 +9,7 @@ class UserAdmin(admin.ModelAdmin):
 
 admin.site.register(User, UserAdmin)
 
+class DeviceAdmin(admin.ModelAdmin):
+	pass
 
+admin.site.register(Device, DeviceAdmin)

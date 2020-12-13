@@ -29,6 +29,10 @@ class User(AbstractUser):
     gender = models.CharField(max_length=20,null=True,blank=True, choices=USER_GENDER)    
     state = models.PositiveIntegerField(default=1,choices=USER_STATE)
 
+    class Meta:
+        managed = True
+        db_table = 'tbl_user'
+
     def clean(self):
         if not self.username:
             raise ValidationError('Please enter username.')

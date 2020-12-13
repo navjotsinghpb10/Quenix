@@ -1,0 +1,122 @@
+{% extends 'admin/base.html' %}
+{% load i18n extras %}
+{% block extrahead %} 
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+{% endblock %}
+{% block content %}
+<style type="text/css">
+body.dashboard {
+    font-size: 12px;
+}
+.dash-value {
+    height: 131px;
+}
+.border-theme {
+    border-color: #031a4c !important;
+}
+.dash-img {
+    width: 50px;
+}
+.width-3rem {
+    width: 3rem!important;
+}
+.height-3 {
+    height: 0.1875rem;
+}
+form.outer-top-xs input {
+    border: none;
+    background: #f9f9fb !important;
+    border-radius: 6px;
+    height: 50px;
+}
+.suit-columns {
+    display: flex;
+    padding-left: 240px !important;
+    padding-right: 40px;
+}
+ .scrollbar-auto { 
+            scrollbar-width: auto; 
+            height: 400px; 
+            width: 300px; 
+            overflow-y: scroll; 
+    } 
+.tabs a,.tabs a:hover {
+    color: #000000;
+    text-decoration: none !important;
+}
+</style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js'></script>
+
+
+<div class="container-fluid h-100">
+  <div class="conten-page mb-3 mx-2">  
+    <div class="mb-5 ">
+      <div class="row">
+        <div class="col-lg-3 col-12 tabs">
+        <a href="/admin/accounts/user/">
+          <div class="bg-light d-flex align-items-center my-1 m-lg-0 dash-value border border-theme p-4">
+            <div class="d-flex justify-content-between w-100 align-items-center">
+              <div class="dash-data">
+                <h2 class="mb-1">{{1|total_user}}</h2>
+                <h6>Total User Registered</h6>
+              </div>
+              <div class="dash-img">
+                <img src="/static/images/total-person.png" alt="calendar" class="width-dash w-100">
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div class="col-lg-3 col-12  tabs">
+        <a href="/admin/accounts/user/?is_active__exact=1">
+          <div class="bg-light d-flex align-items-center my-1 m-lg-0 dash-value border border-theme p-4">
+            <div class="d-flex justify-content-between w-100 align-items-center">
+              <div class="dash-data">
+                <h2 class="mb-1">{{1|total_active_user}}</h2>
+                <h6>Total Active User</h6>
+              </div>
+              <div class="dash-img">
+                <img src="/static/images/active-person.png" alt="calendar" class="width-dash w-100">
+              </div>
+            </div>
+          </div>
+          </a>
+        </div>
+
+        <div class="col-lg-3 col-12 tabs  ">
+        <a href="/admin/accounts/user/?q=&is_active__exact=0">
+          <div class="bg-light d-flex align-items-center m-lg-0 my-1 dash-value border border-theme p-4">
+            <div class="d-flex justify-content-between w-100 align-items-center">
+              <div class="dash-data">
+                <h2 class="mb-1">{{1|total_inactive_user}}</h2>
+                <h6>Total Inactive user</h6>
+              </div>
+              <div class="dash-img">
+                <img src="/static/images/inactive-person.png" alt="calendar" class="width-dash w-100">
+              </div>
+            </div>
+          </div>
+          </a>
+        </div> 
+       </div>
+    </div>
+
+  </div>
+</div>
+
+ 
+
+{% endblock %}
+
+{% block recent-action %}
+
+{% endblock %}
+{% block sidebar %}
+{% endblock %}
+ 

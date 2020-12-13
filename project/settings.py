@@ -23,7 +23,7 @@ SITE_ID = 1
 SECRET_KEY = '+l*a#yuk&26bevti9@40#i47%s1^y&elb4f+tt2m_!n4!7t1o!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -31,8 +31,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    # 'jet.dashboard',
-    # 'jet',
+    'jet.dashboard',
+    'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -68,7 +68,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,7 +76,12 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
+        'libraries':{
+            'extras': 'accounts.templatetags.extras',
+
+            }
         },
     },
 ]
@@ -91,7 +96,7 @@ ASGI_APPLICATION = "project.routing.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'penokio',
+        'NAME': 'quenix',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
@@ -100,10 +105,6 @@ DATABASES = {
     }
 }
 
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
-DATABASES['default']['CONN_MAX_AGE'] = 500
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
@@ -144,6 +145,15 @@ AUTH_PASSWORD_VALIDATORS = [{
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     }]
 
+
+
+
+
+
+
+
+JET_SIDE_MENU_COMPACT = True
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -177,7 +187,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
+#Static files (CSS, JavaScript, Images)
+#https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
