@@ -20,7 +20,8 @@ from django.conf import settings
 router = DefaultRouter()
 
 urlpatterns = [
-
+    # url(r'^jet/', include('jet.urls', 'jet')),
+    # url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     path('api/v1/login/', accounts_views.LoginView.as_view(),name='login'),
     path('api/v1/', include('rest_auth.urls')),
     path('api/v1/registration/', accounts_views.UserRegister.as_view(), name='user_register'),   
